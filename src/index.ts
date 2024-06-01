@@ -37,7 +37,13 @@ async function updateUser(username: string,{
     })
     console.log(res);
 }
-updateUser("naruto1",{
-    firstName: "goku",
-    lastName: "gohan"
-})
+async function getUser(username: string) {
+    const res=await prisma.user.findUnique({
+        where: {
+            email: username
+        }
+
+    })
+    console.log(res);
+}
+getUser("naruto1");

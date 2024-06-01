@@ -28,8 +28,8 @@ function insertUser(username, password, firstName, lastName) {
         console.log(res);
     });
 }
-function updateUser(username_1, _a) {
-    return __awaiter(this, arguments, void 0, function* (username, { firstName, lastName }) {
+function updateUser(username, { firstName, lastName }) {
+    return __awaiter(this, void 0, void 0, function* () {
         const res = yield prisma.user.update({
             where: {
                 email: username
@@ -42,7 +42,14 @@ function updateUser(username_1, _a) {
         console.log(res);
     });
 }
-updateUser("naruto1", {
-    firstName: "goku",
-    lastName: "gohan"
-});
+function getUser(username) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const res = yield prisma.user.findUnique({
+            where: {
+                email: username
+            }
+        });
+        console.log(res);
+    });
+}
+getUser("naruto1");
